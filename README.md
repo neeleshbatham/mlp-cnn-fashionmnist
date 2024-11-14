@@ -1,109 +1,147 @@
-# **Fashion-MNIST Classification using Custom MLP and CNN Models**
+# **Fashion-MNIST Classification with Custom MLP and CNN Models**
 
-This project implements image classification on the Fashion-MNIST dataset using a custom Multilayer Perceptron (MLP) and a Convolutional Neural Network (CNN). The MLP is implemented from scratch, including forward and backward passes, while the CNN utilizes PyTorch's built-in modules. The goal is to understand the fundamentals of neural networks and explore the integration of custom components with standard deep learning frameworks.
+This project demonstrates image classification on the Fashion-MNIST dataset using a custom-implemented Multilayer Perceptron (MLP) and a Convolutional Neural Network (CNN) within a Jupyter Notebook (`EE954_CNN_MLP_Group10.ipynb`). The MLP is built from scratch, including manual forward and backward passes, while the CNN leverages PyTorch's built-in modules. The notebook integrates both models to explore their performance and provides insights into neural network training and evaluation.
 
 ---
 
 ## **Table of Contents**
 
-- [Overview](#overview)
-- [Dataset](#dataset)
-- [Model Architecture](#model-architecture)
-  - [Custom MLP Classifier](#1-custom-mlp-classifier)
-  - [CNN Backbone Model](#2-cnn-backbone-model)
-- [Requirements](#requirements)
+- [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Usage](#usage)
+- [Running the Notebook](#running-the-notebook)
+- [Notebook Structure](#notebook-structure)
 - [Results](#results)
-- [Project Structure](#project-structure)
+- [Additional Notes](#additional-notes)
 - [License](#license)
-- [Acknowledgments](#acknowledgments)
 - [Contact](#contact)
 
 ---
 
-## **Overview**
+## **Prerequisites**
 
-- **Objective:** Classify images in the Fashion-MNIST dataset using both a custom-implemented MLP and a CNN model.
-- **Key Features:**
-  - Implemented MLP from scratch, including custom forward and backward passes.
-  - Utilized PyTorch's modules for the CNN backbone.
-  - Integrated the custom MLP classifier with the CNN model.
-  - Explored different hyperparameters and weight initialization methods.
-  - Evaluated models on training, validation, and test datasets.
-
----
-
-## **Dataset**
-
-The [Fashion-MNIST](https://github.com/zalandoresearch/fashion-mnist) dataset is a collection of 70,000 grayscale images of 28x28 pixels, categorized into 10 fashion classes:
-
-1. T-shirt/top
-2. Trouser
-3. Pullover
-4. Dress
-5. Coat
-6. Sandal
-7. Shirt
-8. Sneaker
-9. Bag
-10. Ankle boot
-
-**Data Split:**
-
-- **Training Set:** 48,000 images (80% of training data)
-- **Validation Set:** 12,000 images (20% of training data)
-- **Test Set:** 10,000 images
-
----
-
-## **Model Architecture**
-
-### **1. Custom MLP Classifier**
-
-- **Implemented from Scratch:**
-  - **Linear Layers:** Custom implementation of linear transformations.
-  - **Activation Functions:** Custom ReLU activation functions.
-  - **Forward Pass:** Manually coded to process inputs through the network layers.
-  - **Backward Pass:** Manually computed gradients for backpropagation.
-- **Architecture:**
-  - **Input Layer:** Accepts flattened 28x28 images (784 inputs).
-  - **Hidden Layers:**
-    - First hidden layer with 256 neurons.
-    - Second hidden layer with 128 neurons.
-  - **Output Layer:** 10 neurons corresponding to the 10 classes.
-- **Loss Function:** Custom implementation of cross-entropy loss.
-
-### **2. CNN Backbone Model**
-
-- **Convolutional Layers:**
-  - **Layer 1:** Conv2d (1 input channel, 32 output channels) → ReLU → MaxPool2d
-  - **Layer 2:** Conv2d (32 → 64) → ReLU → MaxPool2d
-  - **Layer 3:** Conv2d (64 → 128) → ReLU
-  - **Layer 4:** Conv2d (128 → 256) → ReLU
-  - **Layer 5:** Conv2d (256 → 512) → ReLU → MaxPool2d
-- **Feature Extraction:** Extracted features are flattened and fed into the custom MLP classifier.
-- **Weight Initialization:** He (Kaiming) initialization for convolutional layers.
-
----
-
-## **Requirements**
+Before running the notebook, ensure that you have the following installed:
 
 - **Python 3.6+**
-- **Libraries:**
+- **Jupyter Notebook or JupyterLab**
+- **Required Python Libraries:**
   - `torch`
   - `torchvision`
   - `numpy`
-  - `matplotlib` (optional, for plotting)
-- **Hardware:**
-  - CPU or GPU (optional, for faster training)
-
+  - `matplotlib`
 ---
 
 ## **Installation**
 
-1. **Clone the Repository:**
+### **1. Clone the Repository**
 
-   ```bash
-   git clone https://github.com/yourusername/fashion-mnist-mlp-cnn.git
-   cd fashion-mnist-mlp-cnn
+If you haven't already, clone the repository to your local machine:
+
+```bash
+git clone https://github.com/neeleshbatham/mlp-cnn-fashionmnist.git
+cd mlp-cnn-fashionmnist
+```
+
+
+### **2. Set Up a Virtual Environment (Recommended)**
+Creating a virtual environment helps manage dependencies and prevents conflicts with other projects.
+
+#### Using venv:
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+#### Using conda:
+```bash
+conda create -n fashion_mnist_env python=3.8
+conda activate fashion_mnist_env
+```
+
+### **3. Install Required Libraries**
+Install the necessary Python packages:
+
+```bash
+pip install torch torchvision numpy matplotlib scikit-learn
+```
+Alternatively, if a requirements.txt file is provided:
+```bash
+pip install -r requirements.txt
+```
+
+## **Running the Notebook**
+
+1. Launch Jupyter Notebook
+From the project directory, start Jupyter Notebook:
+
+```bash
+jupyter notebook
+```
+
+Alternatively, if you prefer JupyterLab:
+```bash
+jupyter lab
+```
+This will open the Jupyter interface in your default web browser.
+
+## 2. Open the Notebook
+In the Jupyter interface, navigate to and open the notebook file:
+
+```bash
+EE954_CNN_MLP_Group10.ipynb
+```
+
+## 3. Run the Notebook Cells
+**``Option 1``**: Run All Cells
+In the notebook menu, select Kernel > Restart & Run All.
+This will execute all cells sequentially from the beginning.
+
+**``Option 2``**: Run Cells Individually
+Start by running the first cell to import necessary libraries.
+Proceed to run each cell in order by clicking Run (▶️) or pressing Shift + Enter.
+This approach allows you to observe outputs and understand each step.
+
+## 4. Monitor Training Progress
+Training Output: The notebook will display training progress for both MLP and CNN models, including loss and accuracy per epoch.
+Training Time: Training times for both models are printed after their respective training loops.
+Evaluation Metrics: The notebook evaluates both models on the test dataset and prints metrics such as test loss and accuracy.
+
+## 5. Visualize Results (Optional)
+If the notebook includes visualization cells (e.g., plotting loss curves), ensure you run these cells to see the graphs.
+Plots may require matplotlib; ensure it's installed.
+
+
+#  **Results** 
+MLP Model:
+
+- Training Accuracy: ~85%
+- Validation Accuracy: ~84%
+- Test Accuracy: ~84%
+- Training Time: Varies based on hardware (e.g., ~2 minutes on CPU)
+
+CNN Model:
+- Training Accuracy: ~93%
+- Validation Accuracy: ~91%
+- Test Accuracy: ~91%
+- Training Time: Varies based on hardware (e.g., ~50 minutes on CPU)
+
+Note: Actual results and training times may vary depending on your system configuration and any modifications to the code or hyperparameters.
+
+Additional Notes
+Hardware Acceleration:
+
+If you have a CUDA-compatible GPU, you can modify the code to utilize it for faster training.
+Add device = torch.device('cuda' if torch.cuda.is_available() else 'cpu') and move models and tensors to the device using .to(device).
+
+
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contact
+For any questions, suggestions, or feedback, please contact 
+- Neelesh Batham: neeleshb24@iitk.ac.in 
+- Karan Arora: karanarora23@iitk.ac.in 
+- Advait Patwardhan: advaitmp24@iitk.ac.in
+- Tony Varghese: tonyv23@iitk.ac.in
