@@ -62,7 +62,7 @@ conda activate fashion_mnist_env
 Install the necessary Python packages:
 
 ```bash
-pip install torch torchvision numpy matplotlib scikit-learn
+pip install torch torchvision numpy matplotlib seaborn
 ```
 Alternatively, if a requirements.txt file is provided:
 ```bash
