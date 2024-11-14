@@ -28,6 +28,7 @@ Before running the notebook, ensure that you have the following installed:
   - `torchvision`
   - `numpy`
   - `matplotlib`
+  - `seaborn`
 ---
 
 ## **Installation**
